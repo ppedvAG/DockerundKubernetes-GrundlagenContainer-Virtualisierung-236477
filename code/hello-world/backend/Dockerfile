@@ -3,10 +3,10 @@ FROM python:3.10-alpine
 # Install flask library
 RUN pip install flask
 
-WORKDIR /app
-COPY app.py .
+WORKDIR /backend
+COPY backend.py .
 
 
-CMD ["python", "app.py" ]
+CMD ["python", "backend.py" ]
 
 EXPOSE 80

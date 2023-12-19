@@ -1,13 +1,19 @@
 version: "3.8"
 
 services:
-  app:
-    build: .
+  frontend:
+    build: frontend
+    ports:
+      - 80:80
+    volumes:
+      - ./frontend:/frontend/
+
+  backend:
+    build: backend
     ports:
       - 8081:80
     volumes:
-      - ./:/app/
-      - my_data:/app/data
+      - ./backend:/backend/
 
   db:
     image: mysql
@@ -24,5 +30,4 @@ services:
       - 8090:8080
 
 volumes:
-  my_data:
   db_data:
