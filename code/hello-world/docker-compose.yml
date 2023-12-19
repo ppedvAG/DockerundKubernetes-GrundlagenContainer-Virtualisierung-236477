@@ -4,10 +4,25 @@ services:
   app:
     build: .
     ports:
-      - "8081:80"
+      - 8081:80
     volumes:
       - ./:/app/
       - my_data:/app/data
 
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
+
 volumes:
   my_data:
+  db_data:
