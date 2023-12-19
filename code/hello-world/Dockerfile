@@ -4,7 +4,8 @@ FROM python:3.10-alpine
 RUN pip install flask
 
 WORKDIR /app
-COPY . .
+COPY app.py .
+
 
 CMD ["python", "app.py" ]
 
