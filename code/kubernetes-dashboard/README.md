@@ -35,7 +35,7 @@ kubectl get pods -n kubernetes-dashboard
 -> Pod forwording
 
 ```
-kubectl
+kubectl -n kubernetes-dashboard port-forward $POD_NAME 8070:8443
 ```
 
 -> Token kriegen
