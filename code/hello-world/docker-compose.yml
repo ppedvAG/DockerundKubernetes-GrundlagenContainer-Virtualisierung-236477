@@ -5,3 +5,9 @@ services:
     build: .
     ports:
       - "8081:80"
+    volumes:
+      - ./:/app/
+      - my_data:/app/data
+
+volumes:
+  my_data:

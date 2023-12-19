@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<html style="background:orange;">Hello World: V1</html>' + str(ips)
+    return '<html style="background:green;">Hello World</html>' + str(ips)
 
 app.run(host='0.0.0.0', port=80, debug=True)
 
