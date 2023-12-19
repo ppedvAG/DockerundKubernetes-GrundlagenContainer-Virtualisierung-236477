@@ -7,13 +7,16 @@ services:
       - 80:80
     volumes:
       - ./frontend:/frontend/
+    networks:
+      - frontend-network
 
   backend:
     build: backend
-    ports:
-      - 8081:80
     volumes:
       - ./backend:/backend/
+    networks:
+      - frontend-network
+      - db-network
 
   db:
     image: mysql
@@ -22,12 +25,23 @@ services:
       MYSQL_ROOT_PASSWORD: secret
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - db-network
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8090:8080
+    networks:
+      - db-network
 
 volumes:
   db_data:
+
+networks:
+  db-network:
+    driver: bridge
+
+  frontend-network:
+    driver: bridge

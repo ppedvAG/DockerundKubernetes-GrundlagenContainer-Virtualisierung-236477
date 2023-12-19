@@ -1,15 +1,14 @@
 from flask import Flask
 import socket, os
-
-hostname = os.uname()[1]
-ips = socket.gethostbyname_ex(hostname)[2]
-
+import requests
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<html style="background:green;">Hello World</html>' + str(ips)
+    
+    backend_response =  requests.get("http://backend:80").text
+    return f'<html style="background:green;">Hello World, The backend said: {backend_response} </html>'
 
 app.run(host='0.0.0.0', port=80, debug=True)
 
