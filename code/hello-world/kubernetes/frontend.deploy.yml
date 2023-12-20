@@ -19,3 +19,12 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+
+          volumeMounts:
+            - name: app-storage-volume
+              mountPath: /frontend/data
+
+      volumes:
+        - name: app-storage-volume
+          persistentVolumeClaim:
+            claimName: app-storage
